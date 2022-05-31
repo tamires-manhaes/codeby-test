@@ -11,7 +11,14 @@ function App() {
   const handleButtonClick = () => {
     console.log('finalizar compra');
   };
+
+  // // produtos acima de 10 reais
+  // const items = acima10;
+
+  // produtos abaixo de 10 reais
   const items = abaixo10;
+
+  console.log(items.value);
 
   return (
     <div className="App">
@@ -28,6 +35,7 @@ function App() {
                   imageUrl={item.imageUrl}
                   listPrice={item.listPrice}
                   sellingPrice={item.sellingPrice}
+                  value={items.value}
                   name={item.name}
                 />
               );
@@ -37,7 +45,7 @@ function App() {
           )}
         </List>
       </Container>
-      <TotalBox value={acima10.value} />
+      <TotalBox value={items.value} />
       <Footer onClick={handleButtonClick} />
     </div>
   );

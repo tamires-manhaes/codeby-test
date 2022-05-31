@@ -8,6 +8,7 @@ interface ICard {
   sellingPrice: number;
   name: string;
   detailUrl: string;
+  value: number;
 }
 
 const Item: FunctionComponent<ICard> = ({
@@ -17,7 +18,15 @@ const Item: FunctionComponent<ICard> = ({
   sellingPrice,
   name,
   detailUrl,
+  value,
 }) => {
+  let formatedListPrice = `${listPrice.toString().slice(0, 1)},${listPrice
+    .toString()
+    .slice(-2)}`;
+
+  let formatedSellingPrice = `${sellingPrice
+    .toString()
+    .slice(0, 1)},${sellingPrice.toString().slice(-2)}`;
   return (
     <Card key={id}>
       <a href={detailUrl}>
@@ -26,8 +35,8 @@ const Item: FunctionComponent<ICard> = ({
         </div>
         <div className="dataBox">
           <h3>{name}</h3>
-          <span className="listPrice">R$ {listPrice}</span>
-          <span className="sellingPrice">R$ {sellingPrice}</span>
+          <span className="listPrice">R$ {formatedListPrice}</span>
+          <span className="sellingPrice">R$ {formatedSellingPrice}</span>
         </div>
       </a>
     </Card>

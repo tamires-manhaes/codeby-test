@@ -7,17 +7,16 @@ interface ITotalBox {
 }
 
 const TotalBox: FunctionComponent<ITotalBox> = ({ value }) => {
-  console.log(
-    value.toLocaleString('pt-BR', {
-      signDisplay: 'exceptZero',
-      unitDisplay: 'long',
-    })
-  );
+  let totalValue = value > 1000 ? 2 : 1;
+  let formatedTotalValue = `${value.toString().slice(0, totalValue)},${value
+    .toString()
+    .slice(-2)}`;
+  console.log(value);
   return (
     <Total>
       <div className="valuesBox">
         <span>Total</span>
-        <span>R${value.toString().split(',')}</span>
+        <span>R${formatedTotalValue}</span>
       </div>
       {value > 1000 ? <FreeShippingTag /> : <></>}
     </Total>
